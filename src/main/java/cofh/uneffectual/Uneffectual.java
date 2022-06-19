@@ -81,8 +81,7 @@ public class Uneffectual {
         }
         List<Field> result = new ArrayList<>(getAllFields(clazz.getSuperclass()));
         List<Field> filteredFields = Arrays.stream(clazz.getDeclaredFields())
-                .filter(f -> Modifier.isPublic(f.getModifiers()) || Modifier.isProtected(f.getModifiers()))
-                .collect(Collectors.toList());
+                .filter(f -> Modifier.isPublic(f.getModifiers()) || Modifier.isProtected(f.getModifiers())).toList();
         result.addAll(filteredFields);
         return result;
     }
