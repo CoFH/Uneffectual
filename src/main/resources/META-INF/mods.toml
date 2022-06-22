@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[34,)"
+loaderVersion = "[41,)"
 issueTrackerURL = "https://github.com/cofh/feedback"
 license = "CoFH - Don't Be A Jerk (Learn, Don't Steal)"
 
@@ -18,13 +18,13 @@ Don't want effect icons? Remove them. Configurable on a per-effect basis.
 [[dependencies.uneffectual]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18.2,)"
+versionRange = "[1.19,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.uneffectual]]
 modId = "forge"
 mandatory = true
-versionRange = "[40.1.0,)"
+versionRange = "[41.0.38,)"
 ordering = "AFTER"
 side = "BOTH"

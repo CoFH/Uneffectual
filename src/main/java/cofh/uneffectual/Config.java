@@ -1,14 +1,13 @@
 package cofh.uneffectual;
 
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Supplier;
 
 import static net.minecraftforge.fml.config.ModConfig.Type.CLIENT;
 
@@ -44,12 +43,6 @@ public class Config {
                 .define("Hidden Effects", new ArrayList<>());
 
         clientSpec = CLIENT_CONFIG.build();
-
-        refreshClientConfig();
-    }
-
-    private static void refreshClientConfig() {
-
     }
 
     public static List<String> getEffects() {
@@ -57,25 +50,6 @@ public class Config {
         return effects == null ? Collections.emptyList() : effects.get();
     }
 
-    // region CONFIGURATION
-    @SubscribeEvent
-    public static void configLoading(ModConfigEvent.Loading event) {
+    private static Supplier<List<String>> effects;
 
-        if (event.getConfig().getType() == CLIENT) {
-            refreshClientConfig();
-        }
-    }
-
-    @SubscribeEvent
-    public static void configReloading(ModConfigEvent.Reloading event) {
-
-        if (event.getConfig().getType() == CLIENT) {
-            refreshClientConfig();
-        }
-    }
-    // endregion
-
-    // region VARIABLES
-    private static ForgeConfigSpec.ConfigValue<List<String>> effects;
-    // endregion
 }
