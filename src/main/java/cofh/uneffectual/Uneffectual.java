@@ -1,12 +1,11 @@
 package cofh.uneffectual;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraftforge.client.EffectRenderer;
+import net.minecraftforge.client.extensions.common.IClientMobEffectExtensions;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -32,29 +31,20 @@ public class Uneffectual {
         modEventBus.addListener(this::clientSetup);
     }
 
-    private EffectRenderer NO_RENDER = new EffectRenderer() {
+    private IClientMobEffectExtensions NO_RENDER = new IClientMobEffectExtensions() {
 
         @Override
-        public void renderInventoryEffect(MobEffectInstance effectInstance, EffectRenderingInventoryScreen<?> gui, PoseStack poseStack, int x, int y, float z) {
-
-        }
-
-        @Override
-        public void renderHUDEffect(MobEffectInstance effectInstance, GuiComponent gui, PoseStack poseStack, int x, int y, float z, float alpha) {
-
-        }
-
-        @Override
-        public boolean shouldRender(MobEffectInstance effect) {
+        public boolean isVisibleInInventory(MobEffectInstance instance) {
 
             return false;
         }
 
         @Override
-        public boolean shouldRenderHUD(MobEffectInstance effect) {
+        public boolean renderInventoryIcon(MobEffectInstance instance, EffectRenderingInventoryScreen<?> screen, PoseStack poseStack, int x, int y, int blitOffset) {
 
             return false;
         }
+
     };
 
     private void clientSetup(final FMLClientSetupEvent event) {
