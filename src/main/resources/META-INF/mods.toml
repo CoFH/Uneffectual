@@ -18,7 +18,7 @@ Don't want effect icons? Remove them. Configurable on a per-effect basis.
 [[dependencies.uneffectual]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18.2,)"
+versionRange = "[1.18.2,1.19)"
 ordering = "AFTER"
 side = "BOTH"
 
