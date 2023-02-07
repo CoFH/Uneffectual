@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[41,)"
+loaderVersion = "[${forge_major_version},)"
 issueTrackerURL = "https://github.com/cofh/feedback"
 license = "CoFH - Don't Be A Jerk (Learn, Don't Steal)"
 
@@ -7,7 +7,7 @@ license = "CoFH - Don't Be A Jerk (Learn, Don't Steal)"
 modId = "uneffectual"
 version = "${file.jarVersion}"
 displayName = "Uneffectual"
-updateJSONURL = "https://raw.github.com/cofh/version/master/uneffectual/update.json"
+updateJSONURL = "https://raw.github.com/cofh/version/main/uneffectual/update.json"
 displayURL = "https://teamcofh.com/"
 logoFile = "logo.png"
 credits = "Team CoFH, Darkosto"
@@ -18,13 +18,13 @@ Don't want effect icons? Remove them. Configurable on a per-effect basis.
 [[dependencies.uneffectual]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19,)"
+versionRange = "[${mc_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.uneffectual]]
 modId = "forge"
 mandatory = true
-versionRange = "[43.1.0,)"
+versionRange = "[${forge_version},)"
 ordering = "AFTER"
 side = "BOTH"
