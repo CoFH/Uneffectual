@@ -1,7 +1,5 @@
 package cofh.uneffectual;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -40,7 +38,7 @@ public class Uneffectual {
         }
 
         @Override
-        public boolean renderInventoryIcon(MobEffectInstance instance, EffectRenderingInventoryScreen<?> screen, PoseStack poseStack, int x, int y, int blitOffset) {
+        public boolean isVisibleInGui(MobEffectInstance instance) {
 
             return false;
         }
