@@ -1,26 +1,26 @@
 package cofh.uneffectual;
 
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static net.minecraftforge.fml.config.ModConfig.Type.CLIENT;
+import static net.neoforged.fml.config.ModConfig.Type.CLIENT;
 
 public class Config {
 
     private static boolean registered = false;
 
-    public static void register() {
+    public static void register(IEventBus modEventBus) {
 
         if (registered) {
             return;
         }
-        FMLJavaModLoadingContext.get().getModEventBus().register(Config.class);
+        modEventBus.register(Config.class);
         registered = true;
 
         genClientConfig();
@@ -33,8 +33,8 @@ public class Config {
     }
 
     // region CONFIG SPEC
-    private static final ForgeConfigSpec.Builder CLIENT_CONFIG = new ForgeConfigSpec.Builder();
-    private static ForgeConfigSpec clientSpec;
+    private static final ModConfigSpec.Builder CLIENT_CONFIG = new ModConfigSpec.Builder();
+    private static ModConfigSpec clientSpec;
 
     private static void genClientConfig() {
 

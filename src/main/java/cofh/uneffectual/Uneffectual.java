@@ -1,14 +1,14 @@
 package cofh.uneffectual;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraftforge.client.extensions.common.IClientMobEffectExtensions;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.extensions.common.IClientMobEffectExtensions;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -20,11 +20,9 @@ import java.util.List;
 @Mod ("uneffectual")
 public class Uneffectual {
 
-    public Uneffectual() {
+    public Uneffectual(ModContainer modContainer, IEventBus modEventBus) {
 
-        Config.register();
-
-        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        Config.register(modEventBus);
 
         modEventBus.addListener(this::clientSetup);
     }
@@ -49,7 +47,7 @@ public class Uneffectual {
 
         for (String effectLoc : Config.getEffects()) {
             try {
-                var effect = ForgeRegistries.MOB_EFFECTS.getValue(ResourceLocation.tryParse(effectLoc));
+                var effect = BuiltInRegistries.MOB_EFFECT.get(ResourceLocation.tryParse(effectLoc));
                 Field effectRenderer = MobEffect.class.getDeclaredField("effectRenderer");
                 effectRenderer.setAccessible(true);
                 effectRenderer.set(effect, NO_RENDER);
