@@ -22,9 +22,9 @@ public class Uneffectual {
 
     public Uneffectual(ModContainer modContainer, IEventBus modEventBus) {
 
-        Config.register(modEventBus);
-
         modEventBus.addListener(this::clientSetup);
+
+        Config.register();
     }
 
     private IClientMobEffectExtensions NO_RENDER = new IClientMobEffectExtensions() {

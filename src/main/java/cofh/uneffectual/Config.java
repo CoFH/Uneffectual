@@ -1,6 +1,5 @@
 package cofh.uneffectual;
 
-import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
@@ -15,12 +14,11 @@ public class Config {
 
     private static boolean registered = false;
 
-    public static void register(IEventBus modEventBus) {
+    public static void register() {
 
         if (registered) {
             return;
         }
-        modEventBus.register(Config.class);
         registered = true;
 
         genClientConfig();
